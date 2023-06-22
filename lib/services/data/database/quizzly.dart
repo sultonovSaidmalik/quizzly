@@ -4,7 +4,7 @@ sealed class QuizData {
   static List<Quiz> levelOne() {
     List<Quiz> result = [];
     List<String> operators = ['+', '-', '*', '/'];
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 10; i++) {
       operators.shuffle();
       String operator = operators[0];
       int intOne = Random().nextInt(5) + 1;
@@ -69,7 +69,7 @@ sealed class QuizData {
   static List<Quiz> levelThree() {
     List<Quiz> result = [];
     List<String> operators = ['+', '-', '*', '/'];
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 10; i++) {
       operators.shuffle();
       String operator = operators[0];
       int intOne = Random().nextInt(20) + 1;

@@ -10,8 +10,7 @@ enum Strings {
   correct('Correct'),
   wrong('Wrong'),
   play('Play again'),
-  home('Home'),
-  score('Your Score');
+  home('Home');
   const Strings(this.text);
 
   final String text;

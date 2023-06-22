@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quizzly/controllers/answer_controller.dart';
-import 'package:quizzly/controllers/intro_controller.dart';
-import 'package:quizzly/controllers/quiz_controller.dart';
 import 'package:quizzly/models/quiz_model.dart';
 import 'package:quizzly/services/constants/colors.dart';
-import 'package:quizzly/services/constants/strings.dart';
 import 'package:quizzly/services/constants/text_styles.dart';
+import 'package:quizzly/services/l10n/app_localization.dart';
 import 'package:quizzly/views/answer_widget/score_widget.dart';
 import 'package:quizzly/views/app_routes.dart';
 import 'package:quizzly/views/quiz_widget/answer_button.dart';
@@ -24,6 +22,7 @@ class AnswerScreen extends StatefulWidget {
 
 class _AnswerScreenState extends State<AnswerScreen> {
   late final AnswerController controller;
+  late final AppLocalizations l10n;
 
   @override
   void initState() {
@@ -33,6 +32,7 @@ controller = AnswerController(updater: setState);
 
   @override
   void didChangeDependencies() {
+    l10n = AppLocalizations.of(context);
     super.didChangeDependencies();
     controller.answers = ModalRoute.of(context)!.settings.arguments as List<Quiz>;
   }
@@ -59,11 +59,11 @@ controller = AnswerController(updater: setState);
                     const SizedBox(height: 30),
                     AnswerButton(
                       onPress: () => controller.tryAgain(context),
-                      label: Strings.play.text,
+                      label: l10n.play,
                     ),
                     AnswerButton(
                       onPress: () => controller.gotoIntro(context),
-                      label: Strings.home.text,
+                      label: l10n.home,
                     ),
                   ],
                 ),
@@ -87,6 +87,7 @@ class AnswerStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Container(
       width: MediaQuery.of(context).size.width * .8,
       height: 150,
@@ -151,9 +152,9 @@ class AnswerStats extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const SizedBox(width: 40),
-              Text(Strings.correct.text, style: AppTextStyles.dmsans16,),
+              Text(l10n.correct, style: AppTextStyles.dmsans16,),
               const SizedBox(width: 10),
-              Text(Strings.wrong.text, style: AppTextStyles.dmsans16,),
+              Text(l10n.wrong, style: AppTextStyles.dmsans16,),
               const SizedBox(),
             ],
           )
