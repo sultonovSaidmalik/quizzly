@@ -29,12 +29,13 @@ class _IntroScreenState extends State<IntroScreen> {
 
   @override
   void didChangeDependencies() {
-    l10n = AppLocalizations.of(context);
+    // l10n = AppLocalizations.of(context);
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations l10n = AppLocalizations.of(context);
     return Scaffold(
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
